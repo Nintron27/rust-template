@@ -5,16 +5,16 @@ cargo_generate_version = ">=0.10.0"
 type = "string"
 prompt = "Project description"
 
+[placeholders.use_tabs]
+type = "bool"
+prompt = "Want to use tabs?"
+default = true
+
 [conditional.'crate_type == "lib"']
 ignore = [ "src/main.rs" ]
 
 [conditional.'crate_type == "bin"']
 ignore = [ "src/lib.rs" ]
 
-[placeholders.use_tabs]
-type = "bool"
-prompt = "Want to use tabs?"
-default = true
-
-[conditional.'use_tabs == false'.placeholders]
+[conditional.'use_tabs == false']
 ignore = [ ".rustfmt.toml" ]
